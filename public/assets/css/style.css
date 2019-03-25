@@ -1,4 +1,9 @@
 body {
-    background-color: lightcoral
+    background-color: black;
+    color: white;
 }
 
+#order-div {
+    text-align: center;
+    margin: 20px;
+}
