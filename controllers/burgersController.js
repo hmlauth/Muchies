@@ -3,7 +3,7 @@ var router = express.Router();
 var burgerModel = require("../models/burgers.js");
 
 router.get("/", function(req, res) {
-    burgerModel.select(function(data) {
+    burgerModel.selectAll(function(data) {
         var allObject = {
             burgers: data
         };
@@ -12,7 +12,17 @@ router.get("/", function(req, res) {
     });
 });
 
-// router.post
+router.post("/api/burgers", function(req, res) {
+    burgerModel.createOne([
+        "burger_name"
+    ], [
+        req.body.burger_name
+    ], 
+        function(result) {
+            res.json({id: result.insertID});
+    });
+});
+
 // router.put
 
 // Export routes for server.js to use.

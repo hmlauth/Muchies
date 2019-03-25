@@ -9,7 +9,7 @@ var connection = require("../config/connection.js");
 function printQuestionMarks(input) {
     var array = [];
 
-    for (var i = 0; i < input.lenght; i++) {
+    for (var i = 0; i < input; i++) {
         array.push("?");
     }
 
@@ -45,7 +45,7 @@ function objToSql(ob) {
 // ++++++++++++++++++++++++++++++++++++++++++++++++
 var orm = {
     // tableInput is the name of the table defined in your model
-    select: function(tableInput, cb) {
+    selectAll: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, results) {
             console.log("selectAll err", err)
@@ -55,7 +55,7 @@ var orm = {
             cb(results);
         });
     },
-    insert: function(table, cols, vals, cb) {
+    createOne: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
         queryString += " (" + cols.toString() + ") VALUES (";
         queryString += printQuestionMarks(vals.length) + ") ";
@@ -70,7 +70,7 @@ var orm = {
         })
 
     },
-    update: function(table, objColVals, condition, cb) {
+    updateOne: function(table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table + " SET ";
         queryString += objToSql(objColVals) + " WHERE " + condition;
         console.log("updateOne queryString", queryString);
