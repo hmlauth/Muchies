@@ -4,6 +4,9 @@
     {{#unless devoured}}
         <div>
             <p>{{id}}. {{burger_name}}</p>
+            <button class="devour-status" data-id="{{id}}" data-newDevour="true">
+                Devour it!
+            </button>
         </div> 
     {{/unless}}
   {{/each}}
@@ -33,6 +36,8 @@
 </form>
 
 <script>
+
+    // Obtain user input and update database
     $("#addburger").on("submit", function(event) {
         console.log("Order submitted")
         event.preventDefault();
@@ -51,4 +56,29 @@
             }
         );
     });
+
+    // on click of button with .devour-status, change devour status to eaten
+    $(".devour-status").on("click", function(event) {
+        var id = $(this).data("id");
+        var newDevour = $(this).attr("data-newDevour");
+
+        var newDevourStatus = {
+            devoured: newDevour
+        };
+
+        console.log(id);
+        console.log(newDevourStatus);
+        console.log(newDevourStatus.devoured);
+
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: newDevourStatus
+        }).then(
+            function() {
+                console.log("Burger devoured!");
+                location.reload();
+            }
+        );
+    });
+
 </script>

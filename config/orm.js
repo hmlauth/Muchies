@@ -17,15 +17,15 @@ function printQuestionMarks(input) {
 }
 
 // Create a second helper function to convert key/value pairs to mySql syntax. This function accepts the object from pulled from the client-side.
-function objToSql(ob) {
+function objToSql(obj) {
     var arr = [];
 
     for (var key in obj) {
         // set the value of respective key as variable value
-        var value = ob[key];
+        var value = obj[key];
 
         // if the object passed through has 
-        if (Object.hasOwnProperty.call(ob, key)) {
+        if (Object.hasOwnProperty.call(obj, key)) {
             // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
