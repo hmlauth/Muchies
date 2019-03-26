@@ -3,7 +3,52 @@ body {
     color: white;
 }
 
-#order-div {
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     text-align: center;
-    margin: 20px;
+    color: black;
+}
+
+#order-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+}
+
+.order-row {
+    justify-content: center;
+    text-align: center;
+}
+
+#burger-div {
+    display: flex;
+    overflow: hidden;
+    text-align: center;
+}
+
+#burger-img {
+    height: 200px;
+}
+
+#new-burger {
+    color: black;
+    background-color: turquoise;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#munched {
+    color: grey;
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
 }
