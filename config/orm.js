@@ -48,8 +48,8 @@ var orm = {
     selectAll: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, results) {
-            console.log("selectAll err", err)
             if (err) {
+                console.log(err);
                 throw err
             }
             cb(results);
